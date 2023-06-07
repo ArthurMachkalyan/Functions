@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 using namespace std;
 
 #define CALCULATOR
@@ -7,7 +7,7 @@ using namespace std;
 
 int Deg(int number, int degree);
 int Fact(int number);
-int Add(int a, int b);  // Объявление функций 
+int Add(int a, int b);  // РћР±СЉСЏРІР»РµРЅРёРµ С„СѓРЅРєС†РёР№ 
 int Sub(int a, int b);
 int Mul(int a, int b);
 double Div(int a, int b);
@@ -20,8 +20,8 @@ void main() {
 #ifdef CALCULATOR
 	
 	int a, b;
-	cout << "Введите два числа: "; cin >> a >> b;
-	int c = Add(a,b); // Вызов, использование функции (Function call)
+	cout << "Р’РІРµРґРёС‚Рµ РґРІР° С‡РёСЃР»Р°: "; cin >> a >> b;
+	int c = Add(a,b); // Р’С‹Р·РѕРІ, РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ С„СѓРЅРєС†РёРё (Function call)
 	cout << a << " + " << b << " = " << c << endl;
 	cout << a << " - " << b << " = " << Sub(a, b) << endl;
 	cout << a << " * " << b << " = " << Mul(a, b) << endl;
@@ -32,7 +32,7 @@ void main() {
 #ifdef FACTORIAL
 	
 	int number;
-	cout << "Введите факториал: "; cin >> number;
+	cout << "Р’РІРµРґРёС‚Рµ С„Р°РєС‚РѕСЂРёР°Р»: "; cin >> number;
 	cout << Fact(number);
 
 #endif // FACTORIAL
@@ -41,8 +41,8 @@ void main() {
 
 	int number;
 	int degree;
-	cout << "Введите число: "; cin >> number;
-	cout << "Введите степень: "; cin >> degree;
+	cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: "; cin >> number;
+	cout << "Р’РІРµРґРёС‚Рµ СЃС‚РµРїРµРЅСЊ: "; cin >> degree;
 	cout << Deg(number, degree);
 
 #endif // DEGREE
@@ -69,28 +69,28 @@ int Fact(int number) {
 	return count;
 }
 
-// Реализация функций (Определение функций - Function definition)
+// Р РµР°Р»РёР·Р°С†РёСЏ С„СѓРЅРєС†РёР№ (РћРїСЂРµРґРµР»РµРЅРёРµ С„СѓРЅРєС†РёР№ - Function definition)
 
 int Add(int a, int b) {   
 	
-	//Addition - сложение
+	//Addition - СЃР»РѕР¶РµРЅРёРµ
 	int c = a + b;
 	return c;
 }
 
 int Sub(int a, int b) {
 
-	//Subtraction - вычитание
+	//Subtraction - РІС‹С‡РёС‚Р°РЅРёРµ
 	return a - b;
 }
 
 int Mul(int a, int b) {
-	//Multiplication - умножение
+	//Multiplication - СѓРјРЅРѕР¶РµРЅРёРµ
 	return a * b;
 }
 
 double Div( int a, int b) {
-	//Division - деление
+	//Division - РґРµР»РµРЅРёРµ
 	return double(a) / b;
 }
 
