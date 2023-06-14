@@ -4,12 +4,12 @@ using namespace std;
 #define tab "\t"
 
 void FillRand(int arr[], const int size);
-void Print(int arr[], int SIZE);
+void Print(const int arr[], const int SIZE);
 void Sort(int arr[], int SIZE);
-void Sum(int arr[], int SIZE);
-void Avg(int arr[], int SIZE);
-void maxValueIn(int arr[], int SIZE);
-void minValueIn(int arr[], int SIZE);
+int Sum(const int arr[], const int SIZE);
+double Avg(const int arr[], const int SIZE);
+int minValueIn(const int arr[], const int SIZE);
+int maxValueIn(const int arr[], const int SIZE);
 void shiftLeft(int arr[], int SIZE);
 void shiftRight(int arr[], int SIZE);
 
@@ -31,16 +31,16 @@ void main() {
 	Print(arr, SIZE);
 
 	//Возвращает сумму элементов массива
-	Sum(arr, SIZE);
+	cout << "Сумма элементов массива: " << Sum(arr, SIZE) << endl;
 
 	//Возвращает среднее - арифметическое элементов массива
-	Avg(arr, SIZE);
+	cout << "Cреднее - арифметическое элементов массива: " << Avg(arr, SIZE) << endl;
 
 	//Возвращает максимальное значение из массива
-	maxValueIn(arr, SIZE);
+	cout << "Mаксимальное значение: " << maxValueIn(arr, SIZE) << endl;;
 
 	//Возвращает минимальное значение из массива
-	minValueIn(arr, SIZE);
+	cout << "Mинмальное значение из массива: " << minValueIn(arr, SIZE) << endl;;
 
 	//Cдвигает массив на заданное число элементов влево
 	shiftLeft(arr, SIZE);
@@ -60,7 +60,7 @@ void FillRand(int arr[], const int size) {
 	}
 }
 
-void Print(int arr[], int SIZE) {
+void Print(const int arr[], const int SIZE) {
 	for (int i = 0; i < SIZE; i++)
 	{
 		cout << arr[i] << tab;
@@ -83,26 +83,21 @@ void Sort(int arr[], int SIZE) {
 	}
 }
 
-void Sum(int arr[], int SIZE) {
+int Sum(const int arr[], const int SIZE) {
 	int sum = 0;
 	for (int i = 0; i < SIZE; i++)
 	{
 		sum += arr[i];
 	}
-	cout << sum << endl;
+	return sum;
 }
 
-void Avg(int arr[], int SIZE) {
+double Avg(const int arr[], const int SIZE) {
 	
-	int sum = 0;
-	for (int i = 0; i < SIZE; i++)
-	{
-		sum += arr[i];
-	}
-	cout << double(sum) / SIZE << endl;
+	return (double)Sum(arr, SIZE) / SIZE;
 }
 
-void maxValueIn(int arr[], int SIZE) {
+int maxValueIn(const int arr[], const int SIZE) {
 	int max = 0;
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -111,11 +106,10 @@ void maxValueIn(int arr[], int SIZE) {
 			max = arr[i];
 		}
 	}
-	cout << "Максимальное значение в массиве: " << max;
-	cout << endl;
+	return max;
 }
 
-void minValueIn(int arr[], int SIZE) {
+int minValueIn(const int arr[], const int SIZE) {
 	int min = arr[0];
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -124,8 +118,7 @@ void minValueIn(int arr[], int SIZE) {
 			min = arr[i];
 		}
 	}
-	cout << "Максимальное значение в массиве: " << min;
-	cout << endl;
+	return min;
 }
 
 void shiftLeft(int arr[], int SIZE) {
