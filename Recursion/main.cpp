@@ -21,22 +21,6 @@ void main() {
 	cout << "¬ведите степень: "; cin >> degree;
 #endif // POWER
 
-	int n;
-	int a = 0, b = 1, c = 0;
-	cin >> n;
-
-	for (int i = 0; i < n; i++)
-	{
-		a = b;
-		b = c;
-		c = a + b;
-		cout << c << endl;
-	}
-
-
-
-
-
 
 #ifdef FACTORIAL
 	int number;
