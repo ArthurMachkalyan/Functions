@@ -10,12 +10,16 @@ void FillRand(int arr[], const int size);
 void FillRand(double arr[], const int size);
 void FillRand(char arr[], const int size);
 void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
+void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS);
+void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 
 void Print(const int arr[], const int SIZE);
 void Print(const double arr[], const int SIZE);
 void Print(const char arr[], const int SIZE);
 void Print(int arr[ROWS][COLS], const int ROWS, const int COLS);
+void Print(double arr[ROWS][COLS], const int ROWS, const int COLS);
+void Print(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 
 void Sort(int arr[], int SIZE);
@@ -26,12 +30,15 @@ int Sum(const int arr[], const int SIZE);
 double Sum(const double arr[], const int SIZE);
 char Sum(const char arr[], const int SIZE);
 int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS);
+double Sum(double arr[ROWS][COLS], const int ROWS, const int COLS);
+char Sum(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 
 int Avg(const int arr[], const int SIZE);
 double Avg(const double arr[], const int SIZE);
 char Avg(const char arr[], const int SIZE);
-double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS);
+double Avg(double arr[ROWS][COLS], const int ROWS, const int COLS);
+char Avg(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int minValueIn(const int arr[], const int SIZE);
 double minValueIn(const double arr[], const int SIZE);
@@ -55,7 +62,7 @@ void main() {
 
 	const int SIZE = 10;
 	int arr[SIZE];
-	int i_arr_2[ROWS][COLS];
+	char i_arr_2[ROWS][COLS];
 
 
 	//Заполнение массива случайными числами
@@ -133,6 +140,28 @@ void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS) {
 	}
 }
 
+void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS) {
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			arr[i][j] = rand() % 100000;
+			arr[i][j] /= 100;
+		}
+	}
+}
+
+void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS) {
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			arr[i][j] = rand() % 10;
+		}
+	}
+}
+
+
 void Print(const int arr[], const int SIZE) {
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -167,6 +196,31 @@ void Print(int arr[ROWS][COLS], const int ROWS, const int COLS) {
 		cout << endl;
 	}
 }
+
+void Print(double arr[ROWS][COLS], const int ROWS, const int COLS) {
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << tab;
+		}
+		cout << endl;
+	}
+}
+
+void Print(char arr[ROWS][COLS], const int ROWS, const int COLS) {
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << tab;
+		}
+		cout << endl;
+	}
+}
+
+
+
 
 void Sort(int arr[], int SIZE) {
 	for (int i = 0; i < SIZE; i++)
@@ -252,6 +306,31 @@ int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS) {
 	return sum;
 }
 
+double Sum(double arr[ROWS][COLS], const int ROWS, const int COLS) {
+	double sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
+
+char Sum(char arr[ROWS][COLS], const int ROWS, const int COLS) {
+	char sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
+
+
 int Avg(const int arr[], const int SIZE) {
 	
 	return (double)Sum(arr, SIZE) / SIZE;
@@ -271,6 +350,15 @@ double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS) {
 	return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
 
 }
+
+double Avg(double arr[ROWS][COLS], const int ROWS, const int COLS) {
+	return Sum(arr, ROWS, COLS) / (ROWS * COLS);
+}
+
+char Avg(char arr[ROWS][COLS], const int ROWS, const int COLS) {
+	return Sum(arr, ROWS, COLS) / (ROWS * COLS);
+}
+
 
 int maxValueIn(const int arr[], const int SIZE) {
 	int max = 0;
