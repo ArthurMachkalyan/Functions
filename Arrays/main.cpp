@@ -62,7 +62,7 @@ void main() {
 
 	const int SIZE = 10;
 	int arr[SIZE];
-	char i_arr_2[ROWS][COLS];
+	double i_arr_2[ROWS][COLS];
 
 
 	//Заполнение массива случайными числами

@@ -22,7 +22,7 @@ void PrintField(char field[], const int n) {
 		cout << " ";
 		for (int j = 0; j < 3; j++) 
 		{
-			cout << /*(int)*/field[i + j];
+			cout << (int)field[i + j];
 			if (j < 2)cout << " | ";
 		}
 		cout << endl;
