@@ -447,7 +447,7 @@ void shiftLeft(int arr[], int SIZE) {
 }
 
 void shiftLeft(double arr[], int SIZE) {
-	int number_of_shifts;
+	double number_of_shifts;
 	cout << "Введите число сдвига: "; cin >> number_of_shifts;
 	for (int i = 0; i < number_of_shifts; i++)
 	{
@@ -461,11 +461,11 @@ void shiftLeft(double arr[], int SIZE) {
 }
 
 void shiftLeft(char arr[], int SIZE) {
-	int number_of_shifts;
+	char number_of_shifts;
 	cout << "Введите число сдвига: "; cin >> number_of_shifts;
 	for (int i = 0; i < number_of_shifts; i++)
 	{
-		double buffer = arr[0];
+		char buffer = arr[0];
 		for (int i = 0; i < SIZE; i++)
 		{
 			arr[i] = arr[i + 1];
@@ -490,7 +490,7 @@ void shiftRight(int arr[], int SIZE) {
 }
 
 void shiftRight(double arr[], int SIZE) {
-	int number_of_shifts;
+	double number_of_shifts;
 	cout << "Введите число сдвига: "; cin >> number_of_shifts;
 	for (int i = 0; i < number_of_shifts; i++)
 	{
@@ -505,11 +505,11 @@ void shiftRight(double arr[], int SIZE) {
 }
 
 void shiftRight(char arr[], int SIZE) {
-	int number_of_shifts;
+	char number_of_shifts;
 	cout << "Введите число сдвига: "; cin >> number_of_shifts;
 	for (int i = 0; i < number_of_shifts; i++)
 	{
-		double buffer = arr[SIZE - 1];
+		char buffer = arr[SIZE - 1];
 		for (int i = SIZE - 2; i >= 0; i--)
 		{
 			arr[i + 1] = arr[i];
