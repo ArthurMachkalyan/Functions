@@ -1,93 +1,72 @@
 ﻿#include <iostream>
 using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
+
+
 
 #define tab "\t"
 
-void FillRand(int arr[], const int size);
-void Print(const int arr[], const int SIZE);
-void Sort(int arr[], int SIZE);
-int Sum(const int arr[], const int SIZE);
-double Avg(const int arr[], const int SIZE);
-int minValueIn(const int arr[], const int SIZE);
-int maxValueIn(const int arr[], const int SIZE);
-void shiftLeft(int arr[], int SIZE);
-void shiftRight(int arr[], int SIZE);
+
+template <class A> void FillRand(A arr[], const int size);
+template <class A> void Print(A arr[], const int size);
+template <class A> void Sort(A arr[], const int size);
+template <class A> A Sum(A arr[], const int size);
+template <class A> A Avg(A arr[], const int size);
+template <class A> A minValueIn(A arr[], const int size);
+template <class A> A maxValueIn(A arr[], const int size);
+template <class A> void shiftLeft(A arr[], const int size);
+template <class A> void shiftRight(A arr[], const int size);
+//void shiftLeft(int arr[], int SIZE);
+//void shiftRight(int arr[], int SIZE);
+
 
 
 void main() {
 	setlocale(LC_ALL, "");
 
 	const int SIZE = 10;
-	int arr[SIZE];
+	double arr[SIZE];
 
-	//Заполнение массива случайными числами
+
 	FillRand(arr, SIZE);
-
-	//Вывод массива на экран
 	Print(arr, SIZE);
-
-	//Сортировка массива
 	Sort(arr, SIZE);
 	Print(arr, SIZE);
-
-	//Возвращает сумму элементов массива
 	cout << "Сумма элементов массива: " << Sum(arr, SIZE) << endl;
-
-	//Возвращает среднее - арифметическое элементов массива
 	cout << "Cреднее - арифметическое элементов массива: " << Avg(arr, SIZE) << endl;
-
-	//Возвращает максимальное значение из массива
-	cout << "Mаксимальное значение: " << maxValueIn(arr, SIZE) << endl;;
-
-	//Возвращает минимальное значение из массива
-	cout << "Mинмальное значение из массива: " << minValueIn(arr, SIZE) << endl;;
-
+	cout << "Mаксимальное значение: " << maxValueIn(arr, SIZE) << endl;
+	cout << "Mинмальное значение из массива: " << minValueIn(arr, SIZE) << endl;
 	//Cдвигает массив на заданное число элементов влево
 	shiftLeft(arr, SIZE);
 	Print(arr, SIZE);
-
 	//Cдвигает массив на заданное число элементов вправо
 	shiftRight(arr, SIZE);
 	Print(arr, SIZE);
-	cout << endl;
 
 }
 
-void FillRand(int arr[], const int size) {
+template <class A> void
+FillRand(A arr[], const int size) {
 	for (int i = 0; i < size; i++)
 	{
 		arr[i] = rand() % 10;
 	}
 }
 
-void Print(const int arr[], const int SIZE) {
-	for (int i = 0; i < SIZE; i++)
+template <class A> void Print(A arr[], const int size) {
+	for (int i = 0; i < size; i++)
 	{
 		cout << arr[i] << tab;
 	}
 	cout << endl;
 }
 
-void Print(const double arr[], const int SIZE) {
-	for (int i = 0; i < SIZE; i++)
+template <class A> void Sort(A arr[], const int size) {
+	for (int i = 0; i < size; i++)
 	{
-		cout << arr[i] << tab;
-	}
-	cout << endl;	
-}
-
-void Print(const char arr[], const int SIZE) {
-	for (int i = 0; i < SIZE; i++)
-	{
-		cout << arr[i] << tab;
-	}
-	cout << endl;	
-}
-
-void Sort(int arr[], int SIZE) {
-	for (int i = 0; i < SIZE; i++)
-	{
-		for (int j = i + 1; j < SIZE; j++)
+		for (int j = i + 1; j < size; j++)
 		{
 			if (arr[i] > arr[j])
 			{
@@ -99,31 +78,18 @@ void Sort(int arr[], int SIZE) {
 	}
 }
 
-int Sum(const int arr[], const int SIZE) {
-	int sum = 0;
-	for (int i = 0; i < SIZE; i++)
-	{
-		sum += arr[i];
-	}
-	return sum;
-}
 
-double Sum(const double arr[], const int SIZE) {
+template <class A> A Sum(A arr[], const int size) {
 	double sum = 0;
-	for (int i = 0; i < SIZE; i++)
+	for (int i = 0; i < size; i++)
 	{
 		sum += arr[i];
 	}
 	return sum;
 }
 
-char Sum(const char arr[], const int SIZE) {
-	char sum = 0;
-	for (int i = 0; i < SIZE; i++)
-	{
-		sum += arr[i];
-	}
-	return sum;
+template <class A> A Avg(A arr[], const int size) {
+	return (double)Sum(arr, size) / size;
 }
 
 
@@ -132,22 +98,9 @@ double Avg(const int arr[], const int SIZE) {
 	return (double)Sum(arr, SIZE) / SIZE;
 }
 
-
-int maxValueIn(const int arr[], const int SIZE) {
-	int max = 0;
-	for (int i = 0; i < SIZE; i++)
-	{
-		if (max < arr[i])
-		{
-			max = arr[i];
-		}
-	}
-	return max;
-}
-
-int minValueIn(const int arr[], const int SIZE) {
-	int min = arr[0];
-	for (int i = 0; i < SIZE; i++)
+template <class A> A minValueIn(A arr[], const int size) {
+	double min = arr[0];
+	for (int i = 0; i < size; i++)
 	{
 		if (min > arr[i])
 		{
@@ -157,89 +110,43 @@ int minValueIn(const int arr[], const int SIZE) {
 	return min;
 }
 
-void shiftLeft(int arr[], int SIZE) {
-	int number_of_shifts;
-	cout << "Введите число сдвига: "; cin >> number_of_shifts;
-	for (int i = 0; i < number_of_shifts; i++)
+template <class A> A maxValueIn(A arr[], const int size) {
+	double max = 0;
+	for (int i = 0; i < size; i++)
 	{
-		int buffer = arr[0];
-		for (int i = 0; i < SIZE; i++)
+		if (max < arr[i])
 		{
-			arr[i] = arr[i + 1];
+			max = arr[i];
 		}
-		arr[SIZE - 1] = buffer;
 	}
+	return max;
 }
 
-void shiftLeft(double arr[], int SIZE) {
-	double number_of_shifts;
+template <class A> void shiftLeft(A arr[], const int size) {
+	int number_of_shifts;
 	cout << "Введите число сдвига: "; cin >> number_of_shifts;
 	for (int i = 0; i < number_of_shifts; i++)
 	{
 		double buffer = arr[0];
-		for (int i = 0; i < SIZE; i++)
+		for (int i = 0; i < size; i++)
 		{
 			arr[i] = arr[i + 1];
 		}
-		arr[SIZE - 1] = buffer;
+		arr[size - 1] = buffer;
 	}
 }
 
-void shiftLeft(char arr[], int SIZE) {
-	char number_of_shifts;
-	cout << "Введите число сдвига: "; cin >> number_of_shifts;
-	for (int i = 0; i < number_of_shifts; i++)
-	{
-		char buffer = arr[0];
-		for (int i = 0; i < SIZE; i++)
-		{
-			arr[i] = arr[i + 1];
-		}
-		arr[SIZE - 1] = buffer;
-	}
-}
-
-void shiftRight(int arr[], int SIZE) {
+template <class A> void shiftRight(A arr[], const int size) {
 	int number_of_shifts;
 	cout << "Введите число сдвига: "; cin >> number_of_shifts;
 	for (int i = 0; i < number_of_shifts; i++)
 	{
-		int buffer = arr[SIZE - 1];
-		for (int i = SIZE - 2; i >= 0; i--)
+		double buffer = arr[size - 1];
+		for (int i = size - 2; i >= 0; i--)
 		{
 			arr[i + 1] = arr[i];
 		}
 		arr[0] = buffer;
 	}
-
 }
 
-void shiftRight(double arr[], int SIZE) {
-	double number_of_shifts;
-	cout << "Введите число сдвига: "; cin >> number_of_shifts;
-	for (int i = 0; i < number_of_shifts; i++)
-	{
-		double buffer = arr[SIZE - 1];
-		for (int i = SIZE - 2; i >= 0; i--)
-		{
-			arr[i + 1] = arr[i];
-		}
-		arr[0] = buffer;
-	}
-
-}
-
-void shiftRight(char arr[], int SIZE) {
-	char number_of_shifts;
-	cout << "Введите число сдвига: "; cin >> number_of_shifts;
-	for (int i = 0; i < number_of_shifts; i++)
-	{
-		char buffer = arr[SIZE - 1];
-		for (int i = SIZE - 2; i >= 0; i--)
-		{
-			arr[i + 1] = arr[i];
-		}
-		arr[0] = buffer;
-	}
-
-}
