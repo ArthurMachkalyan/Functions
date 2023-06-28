@@ -18,8 +18,6 @@ template <class A> A minValueIn(A arr[], const int size);
 template <class A> A maxValueIn(A arr[], const int size);
 template <class A> void shiftLeft(A arr[], const int size);
 template <class A> void shiftRight(A arr[], const int size);
-//void shiftLeft(int arr[], int SIZE);
-//void shiftRight(int arr[], int SIZE);
 
 
 
@@ -70,7 +68,7 @@ template <class A> void Sort(A arr[], const int size) {
 		{
 			if (arr[i] > arr[j])
 			{
-				int buffer = arr[j];
+				double buffer = arr[j];
 				arr[j] = arr[i];
 				arr[i] = buffer;
 			}
