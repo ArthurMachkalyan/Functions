@@ -22,7 +22,7 @@ void main() {
 
 	//Заполнение массива случайными числами
 	FillRand(arr, SIZE);
-	
+
 	//Вывод массива на экран
 	Print(arr, SIZE);
 
@@ -49,7 +49,7 @@ void main() {
 	//Cдвигает массив на заданное число элементов вправо
 	shiftRight(arr, SIZE);
 	Print(arr, SIZE);
-
+	cout << endl;
 
 }
 
@@ -61,6 +61,22 @@ void FillRand(int arr[], const int size) {
 }
 
 void Print(const int arr[], const int SIZE) {
+	for (int i = 0; i < SIZE; i++)
+	{
+		cout << arr[i] << tab;
+	}
+	cout << endl;
+}
+
+void Print(const double arr[], const int SIZE) {
+	for (int i = 0; i < SIZE; i++)
+	{
+		cout << arr[i] << tab;
+	}
+	cout << endl;	
+}
+
+void Print(const char arr[], const int SIZE) {
 	for (int i = 0; i < SIZE; i++)
 	{
 		cout << arr[i] << tab;
@@ -92,10 +108,30 @@ int Sum(const int arr[], const int SIZE) {
 	return sum;
 }
 
+double Sum(const double arr[], const int SIZE) {
+	double sum = 0;
+	for (int i = 0; i < SIZE; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+}
+
+char Sum(const char arr[], const int SIZE) {
+	char sum = 0;
+	for (int i = 0; i < SIZE; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+}
+
+
 double Avg(const int arr[], const int SIZE) {
 	
 	return (double)Sum(arr, SIZE) / SIZE;
 }
+
 
 int maxValueIn(const int arr[], const int SIZE) {
 	int max = 0;
@@ -135,12 +171,70 @@ void shiftLeft(int arr[], int SIZE) {
 	}
 }
 
+void shiftLeft(double arr[], int SIZE) {
+	double number_of_shifts;
+	cout << "Введите число сдвига: "; cin >> number_of_shifts;
+	for (int i = 0; i < number_of_shifts; i++)
+	{
+		double buffer = arr[0];
+		for (int i = 0; i < SIZE; i++)
+		{
+			arr[i] = arr[i + 1];
+		}
+		arr[SIZE - 1] = buffer;
+	}
+}
+
+void shiftLeft(char arr[], int SIZE) {
+	char number_of_shifts;
+	cout << "Введите число сдвига: "; cin >> number_of_shifts;
+	for (int i = 0; i < number_of_shifts; i++)
+	{
+		char buffer = arr[0];
+		for (int i = 0; i < SIZE; i++)
+		{
+			arr[i] = arr[i + 1];
+		}
+		arr[SIZE - 1] = buffer;
+	}
+}
+
 void shiftRight(int arr[], int SIZE) {
 	int number_of_shifts;
 	cout << "Введите число сдвига: "; cin >> number_of_shifts;
 	for (int i = 0; i < number_of_shifts; i++)
 	{
 		int buffer = arr[SIZE - 1];
+		for (int i = SIZE - 2; i >= 0; i--)
+		{
+			arr[i + 1] = arr[i];
+		}
+		arr[0] = buffer;
+	}
+
+}
+
+void shiftRight(double arr[], int SIZE) {
+	double number_of_shifts;
+	cout << "Введите число сдвига: "; cin >> number_of_shifts;
+	for (int i = 0; i < number_of_shifts; i++)
+	{
+		double buffer = arr[SIZE - 1];
+		for (int i = SIZE - 2; i >= 0; i--)
+		{
+			arr[i + 1] = arr[i];
+		}
+		arr[0] = buffer;
+	}
+
+}
+
+void shiftRight(char arr[], int SIZE) {
+	char number_of_shifts;
+	cout << "Введите число сдвига: "; cin >> number_of_shifts;
+	for (int i = 0; i < number_of_shifts; i++)
+	{
+		char buffer = arr[SIZE - 1];
 		for (int i = SIZE - 2; i >= 0; i--)
 		{
 			arr[i + 1] = arr[i];
