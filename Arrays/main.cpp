@@ -25,7 +25,7 @@ void main() {
 	setlocale(LC_ALL, "");
 
 	const int SIZE = 10;
-	char arr[SIZE];
+	double arr[SIZE];
 
 
 	FillRand(arr, SIZE);
