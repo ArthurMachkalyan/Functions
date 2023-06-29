@@ -7,7 +7,7 @@
 #include "Shifts.h"
 
 
-void main() {
+/*void main() {
 	setlocale(LC_ALL, "");
 
 	const int SIZE = 10;
@@ -54,4 +54,4 @@ void main() {
 	cout <<"Сумма элементов двумерного массива: " << Sum(i_arr_2, ROWS, COLS) << endl;
 	cout <<"Среднее-арифметическое элементов двумерного массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
 
-}
+}*/
