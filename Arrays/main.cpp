@@ -12,13 +12,26 @@ const int COLS = 5;
 
 
 template <class A> void FillRand(A arr[], const int size);
-template <class A> void FillRand(const A arr[ROWS][COLS], const int ROWS, const int COLS);
+template <class A> void FillRand(A arr[ROWS][COLS], const int ROWS, const int COLS);
+
 template <class A> void Print(A arr[], const int size);
+template <class A> void Print(A arr[ROWS][COLS], const int ROWS, const int COLS);
+
 template <class A> void Sort(A arr[], const int size);
+template <class A> void Sort(A arr[ROWS][COLS], const int ROWS, const int COLS);
+
 template <class A> A Sum(A arr[], const int size);
-template <class A> A Avg(A arr[], const int size);
+template <class A> A Sum (A arr[ROWS][COLS], const int ROWS, const int COLS);
+
+template <class A> double Avg(A arr[ROWS][COLS], const int ROWS, const int COLS);
+template <class A> double Avg(A arr[], const int size);
+
 template <class A> A minValueIn(A arr[], const int size);
+template <class A> A minValueIn(A arr[ROWS][COLS], const int ROWS, const int COLS);
+
 template <class A> A maxValueIn(A arr[], const int size);
+template <class A> A maxValueIn(A arr[ROWS][COLS], const int ROWS, const int COLS);
+
 template <class A> void shiftLeft(A arr[], const int size);
 template <class A> void shiftRight(A arr[], const int size);
 
@@ -49,8 +62,14 @@ void main() {
 	cout << delimetr;
 
 	int i_arr_2[ROWS][COLS];
-
-
+	FillRand(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+	cout << "Сумма элементов массива: " << Sum(i_arr_2, ROWS, COLS) << endl;
+	cout << "Cреднее - арифметическое элементов массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
+	cout << "Mаксимальное значение: " << maxValueIn(i_arr_2, ROWS, COLS) << endl;
+	cout << "Mинмальное значение из массива: " << minValueIn(i_arr_2, ROWS, COLS) << endl;
+	Sort(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
 }
 
 template <class A> void FillRand(A arr[], const int size) {
@@ -60,12 +79,12 @@ template <class A> void FillRand(A arr[], const int size) {
 	}
 }
 
-template <class A> void FillRand(const A arr[ROWS][COLS], const int ROWS, const int COLS) {
+template <class A> void FillRand(A arr[ROWS][COLS], const int ROWS, const int COLS) {
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
-
+			arr[i][j] = rand() % 10;
 		}
 	}
 }
@@ -77,6 +96,18 @@ template <class A> void Print(A arr[], const int size) {
 	}
 	cout << endl;
 }
+
+template <class A> void Print(A arr[ROWS][COLS], const int ROWS, const int COLS) {
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << tab;
+		}
+		cout << endl;
+	}
+}
+
 
 template <class A> void Sort(A arr[], const int size) {
 	for (int i = 0; i < size; i++)
@@ -94,6 +125,28 @@ template <class A> void Sort(A arr[], const int size) {
 }
 
 
+template <class A> void Sort(A arr[ROWS][COLS], const int ROWS, const int COLS) {
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					if (arr[k][l] < arr[i][j])
+					{
+						int buffer = arr[i][j];
+						arr[i][j] = arr[k][l];
+						arr[k][l] = buffer;
+					}
+				}
+			}
+		}
+	}
+}
+
+
 template <class A> A Sum(A arr[], const int size) {
 	A sum = 0;
 	for (int i = 0; i < size; i++)
@@ -103,9 +156,27 @@ template <class A> A Sum(A arr[], const int size) {
 	return sum;
 }
 
-template <class A> A Avg(A arr[], const int size) {
+template <class A> A Sum(A arr[ROWS][COLS], const int ROWS, const int COLS) {
+	A sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
+
+
+template <class A> double Avg(A arr[], const int size) {
 	return (double)Sum(arr, size) / size;
 }
+
+template <class A> double Avg(A arr[ROWS][COLS], const int ROWS, const int COLS) {
+	return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
+}
+
 
 template <class A> A minValueIn(A arr[], const int size) {
 	A min = arr[0];
@@ -119,6 +190,22 @@ template <class A> A minValueIn(A arr[], const int size) {
 	return min;
 }
 
+template <class A> A minValueIn(A arr[ROWS][COLS], const int ROWS, const int COLS) {
+	int min = arr[0][0]; 
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (min > arr[i][j])
+			{
+				min = arr[i][j];
+			}
+		}
+	}
+	return min;
+}
+
+
 template <class A> A maxValueIn(A arr[], const int size) {
 	A max = 0;
 	for (int i = 0; i < size; i++)
@@ -126,6 +213,21 @@ template <class A> A maxValueIn(A arr[], const int size) {
 		if (max < arr[i])
 		{
 			max = arr[i];
+		}
+	}
+	return max;
+}
+
+template <class A> A maxValueIn(A arr[ROWS][COLS], const int ROWS, const int COLS) {
+	int max = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (max < arr[i][j])
+			{
+				max = arr[i][j];
+			}
 		}
 	}
 	return max;
