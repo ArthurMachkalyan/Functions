@@ -4,13 +4,15 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-
+const int ROWS = 3;
+const int COLS = 5;
 
 #define tab "\t"
 #define delimetr "\n-------------------------\n"
 
 
 template <class A> void FillRand(A arr[], const int size);
+template <class A> void FillRand(const A arr[ROWS][COLS], const int ROWS, const int COLS);
 template <class A> void Print(A arr[], const int size);
 template <class A> void Sort(A arr[], const int size);
 template <class A> A Sum(A arr[], const int size);
@@ -46,12 +48,25 @@ void main() {
 
 	cout << delimetr;
 
+	int i_arr_2[ROWS][COLS];
+
+
 }
 
 template <class A> void FillRand(A arr[], const int size) {
 	for (int i = 0; i < size; i++)
 	{
 		arr[i] = rand() % 10;
+	}
+}
+
+template <class A> void FillRand(const A arr[ROWS][COLS], const int ROWS, const int COLS) {
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+
+		}
 	}
 }
 
