@@ -7,17 +7,18 @@ using std::endl;
 
 
 #define tab "\t"
+#define delimetr "\n-------------------------\n"
 
 
-template <class A, class B> void FillRand(A arr[], B size);
-template <class A, class B> void Print(A arr[], B size);
-template <class A, class B> void Sort(A arr[], B size);
-template <class A, class B> A Sum(A arr[], B size);
-template <class A, class B> A Avg(A arr[], B size);
-template <class A, class B> A minValueIn(A arr[], B size);
-template <class A, class B> A maxValueIn(A arr[], B size);
-template <class A, class B> void shiftLeft(A arr[], B size);
-template <class A, class B> void shiftRight(A arr[], B size);
+template <class A> void FillRand(A arr[], const int size);
+template <class A> void Print(A arr[], const int size);
+template <class A> void Sort(A arr[], const int size);
+template <class A> A Sum(A arr[], const int size);
+template <class A> A Avg(A arr[], const int size);
+template <class A> A minValueIn(A arr[], const int size);
+template <class A> A maxValueIn(A arr[], const int size);
+template <class A> void shiftLeft(A arr[], const int size);
+template <class A> void shiftRight(A arr[], const int size);
 
 
 
@@ -43,17 +44,18 @@ void main() {
 	shiftRight(arr, SIZE);
 	Print(arr, SIZE);
 
+	cout << delimetr;
+
 }
 
-template <class A, class B> void
-FillRand(A arr[], B size) {
+template <class A> void FillRand(A arr[], const int size) {
 	for (int i = 0; i < size; i++)
 	{
 		arr[i] = rand() % 10;
 	}
 }
 
-template <class A, class B> void Print(A arr[], B size) {
+template <class A> void Print(A arr[], const int size) {
 	for (int i = 0; i < size; i++)
 	{
 		cout << arr[i] << tab;
@@ -61,7 +63,7 @@ template <class A, class B> void Print(A arr[], B size) {
 	cout << endl;
 }
 
-template <class A, class B> void Sort(A arr[], B size) {
+template <class A> void Sort(A arr[], const int size) {
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = i + 1; j < size; j++)
@@ -77,7 +79,7 @@ template <class A, class B> void Sort(A arr[], B size) {
 }
 
 
-template <class A, class B > A Sum(A arr[], B size) {
+template <class A> A Sum(A arr[], const int size) {
 	A sum = 0;
 	for (int i = 0; i < size; i++)
 	{
@@ -86,11 +88,11 @@ template <class A, class B > A Sum(A arr[], B size) {
 	return sum;
 }
 
-template <class A, class B> A Avg(A arr[], B size) {
+template <class A> A Avg(A arr[], const int size) {
 	return (double)Sum(arr, size) / size;
 }
 
-template <class A, class B> A minValueIn(A arr[], B size) {
+template <class A> A minValueIn(A arr[], const int size) {
 	A min = arr[0];
 	for (int i = 0; i < size; i++)
 	{
@@ -102,7 +104,7 @@ template <class A, class B> A minValueIn(A arr[], B size) {
 	return min;
 }
 
-template <class A, class B > A maxValueIn(A arr[], B size) {
+template <class A> A maxValueIn(A arr[], const int size) {
 	A max = 0;
 	for (int i = 0; i < size; i++)
 	{
@@ -114,7 +116,7 @@ template <class A, class B > A maxValueIn(A arr[], B size) {
 	return max;
 }
 
-template <class A, class B> void shiftLeft(A arr[], B size) {
+template <class A> void shiftLeft(A arr[], const int size) {
 	int number_of_shifts;
 	cout << "Введите число сдвига: "; cin >> number_of_shifts;
 	for (int i = 0; i < number_of_shifts; i++)
@@ -128,7 +130,7 @@ template <class A, class B> void shiftLeft(A arr[], B size) {
 	}
 }
 
-template <class A, class B> void shiftRight(A arr[], B size) {
+template <class A> void shiftRight(A arr[], const int size) {
 	int number_of_shifts;
 	cout << "Введите число сдвига: "; cin >> number_of_shifts;
 	for (int i = 0; i < number_of_shifts; i++)
