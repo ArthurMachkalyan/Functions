@@ -23,8 +23,8 @@ template <class A> void Sort(A arr[ROWS][COLS], const int ROWS, const int COLS);
 template <class A> A Sum(A arr[], const int size);
 template <class A> A Sum (A arr[ROWS][COLS], const int ROWS, const int COLS);
 
-template <class A> double Avg(A arr[ROWS][COLS], const int ROWS, const int COLS);
 template <class A> double Avg(A arr[], const int size);
+template <class A> double Avg(A arr[ROWS][COLS], const int ROWS, const int COLS);
 
 template <class A> A minValueIn(A arr[], const int size);
 template <class A> A minValueIn(A arr[ROWS][COLS], const int ROWS, const int COLS);
